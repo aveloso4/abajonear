@@ -1,0 +1,26 @@
+{
+  "name": "abajonear-api",
+  "version": "0.1.0",
+  "description": "Abajonear RESTful API",
+  "main": "server.js",
+  "repository": "https://git.heroku.com/abajonear-server.git",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "apidoc": {
+    "title": "Abajonear API Docs",
+    "url" : "https://abajonear-api.heroku.com/api"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "jsonwebtoken": "^5.4.1",
+    "lodash": "^3.10.1",
+    "mongoose": "^4.2.8",
+    "q": "^1.4.1"
+  },
+  "engines": {
+    "node": "0.12.7"
+  }
+}

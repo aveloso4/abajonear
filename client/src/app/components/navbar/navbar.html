@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
+        <span class="glyphicon glyphicon-home"></span> Gulp Angular
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+      <ul class="nav navbar-nav">
+        <li class="active"><a ng-href="#">Home</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-if="!vm.authSvc.isUserLoggedIn()"><a ng-href="#/login">Ingresar</a></li>
+        <li ng-if="!vm.authSvc.isUserLoggedIn()"><a ng-href="#/signup">Registrarse</a></li>
+        <li ng-if="vm.authSvc.isUserLoggedIn()" class="dropdown"><a href="#">{{currentUser.shorName || 'User Name'}}</a></li>
+        <li ng-if="vm.authSvc.isUserLoggedIn()" ng-click="vm.logout($event)"><a href="#">Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

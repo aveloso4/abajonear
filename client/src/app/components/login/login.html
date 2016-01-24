@@ -1,0 +1,24 @@
+<div class="panel">
+	<div class="panel-heading">
+		<h2>Ingresar</h2>
+	</div>
+	<div class="panel-body">
+		<form ng-submit="submit()">
+			<div class="input-group">
+				<span class="input-group-addon">Email</span>
+				<input type="email" class="form-control" ng-model="email"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Contraseña</span>
+				<input type="password" class="form-control" ng-model="password"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Recordarme</span>
+				<input type="checkbox" class="form-control" ng-model="rememberMe" ng-checked="rememberMe"/>
+			</div>
+			<button class="btn btn-primary btn-block" type="submit">
+				Ingresar
+			</button>
+		</form>
+	</div>
+</div>

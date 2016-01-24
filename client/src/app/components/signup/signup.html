@@ -1,0 +1,36 @@
+<div class="panel">
+	<div class="panel-heading">
+		<h2>Nuevo usuario</h2>
+	</div>
+	<div class="panel-body">
+		<form ng-submit="submit()">
+			<div class="input-group">
+				<span class="input-group-addon">Nombre</span>
+				<input type="text" class="form-control" ng-model="firstName"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Apellido</span>
+				<input type="text" class="form-control" ng-model="lastName"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Email</span>
+				<input type="email" class="form-control" ng-model="email"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Verificar email</span>
+				<input type="text" class="form-control" ng-model="verifyEmail"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Contraseña</span>
+				<input type="password" class="form-control" ng-model="password"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Verificar contraseña</span>
+				<input type="password" class="form-control" ng-model="verifyPassword"/>
+			</div>
+			<button class="btn btn-primary btn-block" type="submit">
+				Registrarse
+			</button>
+		</form>
+	</div>
+</div>
