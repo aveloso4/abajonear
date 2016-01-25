@@ -35,13 +35,13 @@ module.exports = function(router){
 	} 
 
 	function needsToken(req, res, next) {
-
-		if ((req.url === '/auth' || req.url === '/auth/create') && req.method ==='POST') {
+		next();
+		/*if ((req.url === '/auth' || req.url === '/auth/create') && req.method ==='POST') {
 			console.log('not auth required: ' + req.url);
 			next();
 		} else {
 			checkToken(req, res, next);
-		}
+		}*/
 	}
 
 

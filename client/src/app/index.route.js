@@ -45,6 +45,17 @@
         }
       });
 
+    $stateProvider
+      .state('settings', {
+        url: '/settings',
+        templateUrl: 'app/settings/settings.html',
+        controller: 'SettingsController',
+        controllerAs: 'ctrl',
+        data: {
+          requireAuthentication: true
+        }
+      });
+
     $urlRouterProvider.otherwise('/');
   }
 

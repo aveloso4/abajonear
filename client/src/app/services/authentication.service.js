@@ -11,7 +11,7 @@
       var result = authenticationApi.login(creds);
       result.then(
         function(response) {
-          saveTokens(response);
+          saveTokens(response.tokens);
         },
       //ON ERROR
       //erase token and refreshToken
@@ -54,7 +54,7 @@
       var token = sessionStorage.getItem('access-token'),
           refreshToken = sessionStorage.getItem('refresh-token');
 
-      return token && refreshToken;
+      return refreshToken && token;
     }
 
     return {

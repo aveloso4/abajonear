@@ -1,6 +1,7 @@
 var moongose 	= require('../services/dbAccessService'),
     cryptSvc  = require('../services/encryptationService'),
-    Address   = require('../models/address.js'),
+    Address   = require('../models/address'),
+    Company   = require('../models/company'),
     Schema		= moongose.Schema;
 
 var userTypes = ['admin', 'client', 'seller'];
@@ -14,7 +15,8 @@ var UserSchema = new Schema({
   first_name: String,
   last_name: String,
   user_type: {type: String, enum: userTypes, default: 'client' },
-  addresses: [Address.schema]
+  addresses: [Address.schema],
+  company: Company.schema
 });
 
 UserSchema.pre('save', function(next) {
