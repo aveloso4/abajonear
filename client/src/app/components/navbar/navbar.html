@@ -16,7 +16,7 @@
         <li ng-if="!vm.authSvc.isUserLoggedIn()"><a ng-href="#/signup">Registrarse</a></li>
         <li ng-if="vm.authSvc.isUserLoggedIn()" uib-dropdown on-toggle="">
           <a href id="user-dropdown" uib-dropdown-toggle>
-            {{currentUser.shorName || 'User Name'}}
+            {{vm.currentUser.first_name}}
             <span class="caret"></span>
           </a>
           <ul uib-dropdown-menu aria-labelledby="user-dropdown">

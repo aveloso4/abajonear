@@ -4,10 +4,10 @@
   angular
     .module('abajonear')
     .directive('acmeNavbar', acmeNavbar);
-  acmeNavbar.$inject = ['$state', 'authenticationService'];
+  acmeNavbar.$inject = ['$state', 'authenticationService', 'userService'];
 
   /** @ngInject */
-  function acmeNavbar($state, authenticationService) {
+  function acmeNavbar($state, authenticationService, userService) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
@@ -30,6 +30,11 @@
         vm.authSvc.logout();
         $state.go('invite');
       }
+
+      userService.getCurrent()
+        .then(function(user) {
+          vm.currentUser = user;
+        });
     }
   }
 
