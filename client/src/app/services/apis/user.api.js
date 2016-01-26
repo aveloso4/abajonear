@@ -7,7 +7,7 @@
 	function UserApi($q, $resource, apiBaseUrl, authenticationService) {
 		console.log('token:', authenticationService.isUserLoggedIn());
 		var endpointUrl = apiBaseUrl + '/users',
-			userEndpoint = $resource(endpointUrl,
+			User = $resource(endpointUrl,
 				{},
 				{
 					current: {
@@ -20,13 +20,17 @@
 					setCompany: {
 						method: 'POST',
 						url: apiBaseUrl + '/companies'
+					},
+					addBranch: {
+						method: 'POST',
+						url: apiBaseUrl + '/companies/:companyId/branches'
 					}
 				}
 			);
 		function getCurrent() {
 			var defer = $q.defer();
 
-			userEndpoint.current({},
+			User.current({},
 				function(response) {
 					defer.resolve(response);
 				},
@@ -40,14 +44,32 @@
 		function setCompany(company) {
 			var defer = $q.defer();
 
-			userEndpoint.setCompany(company);
+			User.setCompany(company);
+
+			return defer.promise;
+		}
+
+		function addBranch(companyId, branch) {
+			var defer = $q.defer();
+
+			User.addBranch({
+				companyId: companyId
+			},
+			branch,
+			function(response) {
+				defer.resolve(response);
+			},
+			function(response) {
+				defer.reject(response);
+			});
 
 			return defer.promise;
 		}
 
 		return {
 			getCurrent: getCurrent,
-			setCompany: setCompany
+			setCompany: setCompany,
+			addBranch: addBranch
 		};
 	}
 })();

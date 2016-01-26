@@ -1,7 +1,13 @@
 module.exports = function(router) {
 	var User = require('../models/user').model,
-		Company = require('../models/company').model;
+		Company = require('../models/company').model,
+		Branch = require('../models/branch').model,
+		Address = require('../models/address').model;
 
+
+	//---------------------------------------------------
+	// COMPANIES
+	//---------------------------------------------------
 	router.post('/companies', function(req, res) {
 		console.log('----------User.current._id-------');
 		console.log(User.current._id);
@@ -89,6 +95,54 @@ module.exports = function(router) {
 					});
 				});
 			})
+		});
+	});
+
+	// ------------------------------------------------------------
+	// BRANCHES
+	// ------------------------------------------------------------
+	router.post('/companies/:companyId/branches', function(req, res) {
+		var companyId = req.params.companyId;
+
+		//var address = new Address(req.params.address),
+		var	branch = new Branch({
+				companyId: companyId,
+				//address: address,
+				name: req.body.name
+			});
+
+		Company.findById(companyId, function(err, company) {
+			if (err) {
+				res.send(err);
+			}
+			console.log(branch);
+			company.branches.push(branch);
+
+			company.save(function(err, newCompany) {
+				if (err) {
+					res.send(err);
+				}
+
+				User.findById(newCompany.owner, function(err, user) {
+					if (err) {
+						res.send(err);
+					}
+
+					user.company = newCompany;
+
+					user.save(function(err, newUser) {
+						if (err) {
+							res.send(err);
+						}
+
+						res.json({
+							success: true,
+							user: newUser
+						});
+					});
+
+				});
+			});
 		});
 	});
 };

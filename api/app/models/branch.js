@@ -4,7 +4,9 @@ var mongoose 	= require('../services/dbAccessService'),
 
 
 var BranchSchema = new Schema({
-	address: Address.schema
+	//address: Address.schema,
+	name: String,
+	companyId: String
 });
 
 module.exports = {

@@ -13,4 +13,21 @@
 			</form>
 		</div>
 	</div>
+	<div class="panel">
+		<div class="panel-header">
+			Locales
+		</div>
+		<div class="panel-body">
+			<div ng-repeat="branch in ctrl.currentCompany.branches">
+				{{branch.name}}
+			</div>
+			<form ng-submit="ctrl.addBranch()">
+				<div class="input-group">
+					<span class="input-group-addon">Nombre del local:</span>
+					<input type="text" class="form-control" ng-model="ctrl.newBranch.name"/>
+				</div>
+				<button type="submit">Agregar</button>
+			</form>
+		</div>
+	</div>
 </div>

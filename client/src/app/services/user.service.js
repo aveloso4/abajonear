@@ -32,9 +32,23 @@
 			return result;
 		}
 
+		function addBranch(companyId, branch) {
+			var result = userApi.addBranch(companyId, branch);
+
+			result.then(
+				function(response) {
+					result.resolve(response);
+				}, function(response) {
+					result.reject(response);
+				});
+
+			return result;
+		}
+
 		return {
 			getCurrent: getCurrent,
-			setCompany: setCompany
+			setCompany: setCompany,
+			addBranch: addBranch
 		};
 	}
 })();
